@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Channing Robertson</title>
+    <title>FIZZ BUZZ: A Coding Project By Channing Robertson</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,7 +25,7 @@
     <!--=== Nav Section ===-->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="img/4.png" class="d-inline-block align-text-top" width="30" height="24"> App Name Here</a>
+            <a class="navbar-brand" href="#"><img src="img/4.png" class="d-inline-block align-text-top" width="30" height="24"> FIZZ BUZZ</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -42,7 +42,7 @@
                         <a class="nav-link active" aria-current="page" href="code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/Tunesmithus/FizzBuzz">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="https://www.techwithchan.com/">About Me</a>
@@ -54,19 +54,117 @@
     <!-- Main Section -->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for App Name</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for FIZZ BUZZ</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        //call hello world
-                        function helloworld(){
-                            alert("hello world");
-                        }
+                        //get values from user user
+                            function getValues(){
+
+                                let fizzNumber = document.getElementById("fizzValue").value;
+
+                                let buzzNumber = document.getElementById("buzzValue").value;
+                                
+                                //parse for numbers
+
+                                fizzNumber = parseInt(fizzNumber);
+                                buzzNumber = parseInt(buzzNumber);
+
+                                //check that the numbers are integers
+                                if(Number.isInteger(fizzNumber) && Number.isInteger(buzzNumber)){
+
+                                    //we call fizzBuzz
+                                    let fbArray = fizzBuzz(fizzNumber, buzzNumber);
+
+                                    //call displayData and write the values to the screen
+                                    displayData(fbArray);
+
+                                }
+
+                                else{
+                                    alert("You must enter a integer")
+                                }
+
+                            }
+
+                            //Prints fizz buzz numbers
+                            function fizzBuzz(fizzValue, buzzValue){
+
+                                let fizzBuzzArray = [];
+                                let start = 1;
+                                let end = 100;
+
+                                //loop from 1 to 100
+                                for (let i = start; i < end; i++) {
+
+                                    //check to see if numbers is divisible by both 3 & 5
+                                    //check to see if numbers is divisible by fizz value 3
+                                    //check to see if numbers is divisible by buzz value 5
+
+                                    if (i % fizzValue == 0 && i % buzzValue == 0) {
+                                        fizzBuzzArray.push('FizzBuzz')
+                                    }
+                                    else if(i % fizzValue == 0){
+                                        fizzBuzzArray.push('Fizz');
+                                    }
+                                    else if(i % buzzValue == 0){
+                                        fizzBuzzArray.push('Buzz');
+                                    }
+                                    else{
+                                        fizzBuzzArray.push(i);
+                                    }
+
+                                }
+
+                                return fizzBuzzArray;
+
+                            }
+
+                            //loop over the array and create a table row for each item
+                            function displayData(fbArray){
+
+                                //get the table body element fromt the page
+                                let tableBody = document.getElementById("results");
+
+                                //get the template row
+                                let templateRow = document.getElementById("fizzBuzzTemplate");
+
+                                //clear
+                                tableBody.innerHTML= "";
+
+                                for (let i = 0; i < fbArray.length; i += 5) {
+
+                                    let tableRow = document.importNode(templateRow.content, true);
+                                    
+                                    //used to put into table array
+                                    let rowCols = tableRow.querySelectorAll("td");
+                                    rowCols[0].classList.add(fbArray[i])
+                                    rowCols[0].textContent = fbArray[i];
+
+                                    rowCols[1].classList.add(fbArray[i+1])
+                                    rowCols[1].textContent = fbArray[i+1];
+
+                                    rowCols[2].classList.add(fbArray[i+2])
+                                    rowCols[2].textContent = fbArray[i+2];
+
+                                    rowCols[3].classList.add(fbArray[i+3])
+                                    rowCols[3].textContent = fbArray[i+3];
+
+                                    rowCols[4].classList.add(fbArray[i+4])
+                                    rowCols[4].textContent = fbArray[i+4];
+
+                                    tableBody.appendChild(tableRow);
+
+                                }
+
+                                //add all the rows to the table.
+
+                            }
                     </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The code is structed in one funtion.</p>
+                    <p>The code is structured in one funtion.</p>
                     <h5>Hello World</h5>
                     <p> Hello World is a function that displays an alert with a message of "Hello World"</p>
                 </div>
@@ -78,7 +176,7 @@
         <div class="container-fluid">
             <div class="row row-cols-1 row-cols-lg-3 gy-2">
                 <div class="col order-last order-lg-first text-light">
-                    <div><span class="text-muted">&copy;2022</span>Channing Robertson | channing.robertson@gmail.com</div>
+                    <div><span class="text-muted">&copy;2022 </span>Channing Robertson | channing.robertson@gmail.com</div>
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-center">
                     <img src="#" alt="Channing Robertson Logo" height="24">
